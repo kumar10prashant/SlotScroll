@@ -9,12 +9,14 @@ public class SlotScrollFinal : MonoBehaviour
     [SerializeField] float iconHeight;
     [SerializeField] float rectHeight;
     [SerializeField] int numberofLoops;
-    [SerializeField] Ease ease,endEase;
-    [SerializeField] float time = 5,endtime = 5f;
+    [SerializeField] Ease startEase,ease,endEase;
+    [SerializeField] float time = 5,endtime = 5f,startTime = 2f;
     [SerializeField] int iconCounter;
     [SerializeField] float firstIconPos;
     
     public static Action scrollFinish;
+
+   
 
 
    
@@ -32,9 +34,12 @@ public class SlotScrollFinal : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         var ran = Random.Range(0, 10);
         Debug.Log(ran);
-        var target = -firstIconPos - (ran * iconHeight);
-        seq.Append(rect.DOAnchorPosY(target + iconHeight * 0.15f, time).SetEase(ease).OnUpdate(ReUseIcon).SetLoops(numberofLoops, LoopType.Incremental));
-        seq.Append(rect.DOAnchorPosY((target * (numberofLoops)), endtime).SetEase(endEase).OnUpdate(ReUseIcon));
+        var target = -iconHeight * transform.childCount /*- firstIconPos*/;
+        //rect.DOAnchorPosY((-iconHeight * transform.childCount), endtime).SetEase(ease).OnUpdate(ReUseIcon);
+        seq.Append(rect.DOAnchorPosY((-iconHeight * 4), startTime).SetEase(startEase).OnUpdate(ReUseIcon));
+        seq.Append(rect.DOAnchorPosY(((target * numberofLoops) + (iconHeight * 0.9f)), time).SetEase(ease).OnUpdate(ReUseIcon));
+        seq.Append(rect.DOAnchorPosY((target * numberofLoops), endtime).SetEase(endEase).OnUpdate(ReUseIcon));
+
         seq.OnComplete(() =>
         {
             scrollFinish?.Invoke();
@@ -45,11 +50,11 @@ public class SlotScrollFinal : MonoBehaviour
 
         if(rect.anchoredPosition.y <= -(iconHeight * iconCounter))
         {
-           // Debug.Log(iconHeight * iconCounter);
-            transform.GetChild(transform.childCount - 1).GetComponent<RectTransform>().anchoredPosition = new Vector2(transform.GetChild(transform.childCount - 1).GetComponent<RectTransform>().anchoredPosition.x, firstIconPos + (iconHeight * iconCounter));
-            transform.GetChild(transform.childCount - 1).SetAsFirstSibling();
-            iconCounter++;
-            
+            // Debug.Log(iconHeight * iconCounter);
+            var child = transform.GetChild(transform.childCount - 1);
+            child.GetComponent<RectTransform>().anchoredPosition = new Vector2(child.GetComponent<RectTransform>().anchoredPosition.x, firstIconPos + (iconHeight * iconCounter));
+            child.SetAsFirstSibling();
+            iconCounter++;  
         }
     }
 

@@ -10,6 +10,8 @@ public class SlotContorller : MonoBehaviour
     SlotScrollFinal[] slots;
 
     [SerializeField] Button scrollBtn;
+
+    [SerializeField]IconContainer icons;
    
 
     public void StartSpin()
@@ -27,6 +29,20 @@ public class SlotContorller : MonoBehaviour
         SlotScrollFinal.scrollFinish -= ScrollComplete;
     }
 
+    int iconCounter;
+    private void Start()
+    {
+        slots = transform.GetComponentsInChildren<SlotScrollFinal>();
+
+        foreach (var slotScroll in slots)
+        {
+            foreach (var im in slotScroll.GetComponentsInChildren<Image>())
+            {
+                im.sprite = icons.iconSprite[iconCounter % icons.iconSprite.Count];
+                iconCounter++;
+            }
+        }
+    }
     public void ScrollComplete()
     {
         slotCount++;
@@ -53,8 +69,12 @@ public class SlotContorller : MonoBehaviour
     IEnumerator StartSpinCoroutine()
     {
         slots = transform.GetComponentsInChildren<SlotScrollFinal>();
+     
         foreach(var slotScroll in slots)
         {
+            iconCounter++;
+          
+         
             slotScroll.StartSpin();
             yield return new WaitForSeconds(delayBetweenSlots);
         }
