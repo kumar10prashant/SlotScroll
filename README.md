@@ -1,3 +1,8 @@
+# Tool and Assets
+Unity Version: 6000.3.8f1
+
+Art Assets: https://retrostylegames.itch.io/crowns-of-kemet-free
+
 # Slot Machine UI
 
 A simple slot machine animation system built in Unity. The main focus of this project was creating a smooth scrolling effect while keeping the implementation lightweight and performance-friendly.
