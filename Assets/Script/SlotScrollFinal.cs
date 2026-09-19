@@ -33,7 +33,7 @@ public class SlotScrollFinal : MonoBehaviour
     {
         Sequence seq = DOTween.Sequence();
         var ran = Random.Range(0, 10);
-        Debug.Log(ran);
+        //Debug.Log(ran);
         var target = -iconHeight * transform.childCount /*- firstIconPos*/;
         //rect.DOAnchorPosY((-iconHeight * transform.childCount), endtime).SetEase(ease).OnUpdate(ReUseIcon);
         seq.Append(rect.DOAnchorPosY((-iconHeight * 4), startTime).SetEase(startEase).OnUpdate(ReUseIcon));

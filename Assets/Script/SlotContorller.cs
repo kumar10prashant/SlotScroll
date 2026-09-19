@@ -48,7 +48,7 @@ public class SlotContorller : MonoBehaviour
         slotCount++;
         if(slotCount == slots.Length)
         {
-            Debug.Log("Finish");
+            //Debug.Log("Finish");
             slotCount = 0;
             scrollBtn.interactable = true;
         }
@@ -56,7 +56,6 @@ public class SlotContorller : MonoBehaviour
 
     public void ResetSpin()
     {
-        slots = transform.GetComponentsInChildren<SlotScrollFinal>();
         scrollBtn.interactable = false;
         foreach (var slotScroll in slots)
         {
@@ -67,9 +66,7 @@ public class SlotContorller : MonoBehaviour
     }
 
     IEnumerator StartSpinCoroutine()
-    {
-        slots = transform.GetComponentsInChildren<SlotScrollFinal>();
-     
+    {  
         foreach(var slotScroll in slots)
         {
             iconCounter++;
