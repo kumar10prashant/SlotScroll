@@ -11,7 +11,7 @@ A simple slot machine animation system built in Unity. The main focus of this pr
 
 Here is a gameplay demonstration:
 
-https://github.com/user-attachments/assets/a135cd34-561f-44f8-aa42-66d3fcf6da12
+https://github.com/user-attachments/assets/2d19e330-3a41-4545-ad76-4f532c3dc643
 
 ## How It Works
 

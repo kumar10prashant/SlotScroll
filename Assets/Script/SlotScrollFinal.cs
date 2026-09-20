@@ -13,7 +13,9 @@ public class SlotScrollFinal : MonoBehaviour
     [SerializeField] float time = 5,endtime = 5f,startTime = 2f;
     [SerializeField] int iconCounter;
     [SerializeField] float firstIconPos;
-    
+
+
+    [SerializeField] int startEffect = 7,endEffect = 3;//Higher the number higher the effect
     public static Action scrollFinish;
 
    
@@ -36,8 +38,8 @@ public class SlotScrollFinal : MonoBehaviour
         //Debug.Log(ran);
         var target = -iconHeight * transform.childCount /*- firstIconPos*/;
         //rect.DOAnchorPosY((-iconHeight * transform.childCount), endtime).SetEase(ease).OnUpdate(ReUseIcon);
-        seq.Append(rect.DOAnchorPosY((-iconHeight * 4), startTime).SetEase(startEase).OnUpdate(ReUseIcon));
-        seq.Append(rect.DOAnchorPosY(((target * numberofLoops) + (iconHeight * 0.9f)), time).SetEase(ease).OnUpdate(ReUseIcon));
+        seq.Append(rect.DOAnchorPosY((-iconHeight * startEffect), startTime).SetEase(startEase).OnUpdate(ReUseIcon));
+        seq.Append(rect.DOAnchorPosY(((target * numberofLoops) + (iconHeight * endEffect)), time).SetEase(ease).OnUpdate(ReUseIcon));
         seq.Append(rect.DOAnchorPosY((target * numberofLoops), endtime).SetEase(endEase).OnUpdate(ReUseIcon));
 
         seq.OnComplete(() =>

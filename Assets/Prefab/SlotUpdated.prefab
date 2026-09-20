@@ -357,8 +357,8 @@ MonoBehaviour:
   ease: 1
   endEase: 27
   time: 2
-  endtime: 0.5
-  startTime: 0.7
+  endtime: 1
+  startTime: 1
   iconCounter: 1
   firstIconPos: 0
 --- !u!1 &2845037627162903913
