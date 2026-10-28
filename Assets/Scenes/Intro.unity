@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7e3a6ab2db7bb4692ae46bada5f9cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DownloadAssest
-  URL: https://drive.google.com/uc?export=download&id=1rzYWCqii_vPe5b8ykAEuH2Ago951lry2
+  URL: https://slottestingassetbundle.s3.ap-south-1.amazonaws.com/slotreel
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

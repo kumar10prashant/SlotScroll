@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SlotContorller : MonoBehaviour
 {
+    
     [SerializeField] float delayBetweenSlots;
     int slotCount;
     SlotScrollFinal[] slots;
